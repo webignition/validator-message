@@ -2,15 +2,8 @@
 
 namespace webignition\ValidatorMessage;
 
-abstract class AbstractMessage implements \JsonSerializable
+abstract class AbstractMessage implements MessageInterface, \JsonSerializable
 {
-    const KEY_TYPE = 'type';
-    const KEY_MESSAGE = 'message';
-
-    const TYPE_ERROR = 'error';
-    const TYPE_WARNING = 'warning';
-    const TYPE_INFO = 'info';
-
     private $type;
     private $message;
 
@@ -30,7 +23,7 @@ abstract class AbstractMessage implements \JsonSerializable
         return $this->message;
     }
 
-    public function withMessage(string $message): self
+    public function withMessage(string $message): MessageInterface
     {
         $new = clone $this;
         $new->message = $message;
@@ -61,7 +54,7 @@ abstract class AbstractMessage implements \JsonSerializable
         ];
     }
 
-    public function getHash()
+    public function getHash(): string
     {
         return md5((string) json_encode($this));
     }
