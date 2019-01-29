@@ -1,0 +1,45 @@
+{
+    "name": "webignition/validator-message",
+    "description": "Generic validation output message",
+    "keywords": [],
+    "homepage": "https://github.com/webignition/validator-message",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jon Cram",
+            "email": "jon@webignition.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "webignition\\ValidatorMessage\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "webignition\\ValidatorMessage\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "static-analysis": "./vendor/bin/phpstan analyse src tests --level=7",
+        "test": "./vendor/bin/phpunit --colors=always",
+        "cs": "./vendor/bin/phpcs src tests --colors --standard=PSR2",
+        "ci": [
+            "@composer static-analysis",
+            "@composer cs",
+            "@composer test"
+        ]
+    },
+    "require": {
+        "php": ">=7.2.0"
+
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7",
+        "squizlabs/php_codesniffer": "^3",
+        "phpstan/phpstan": "^0.11.1"
+    },
+    "minimum-stability":"stable",
+    "prefer-stable":true
+}
