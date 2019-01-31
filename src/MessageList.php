@@ -2,7 +2,7 @@
 
 namespace webignition\ValidatorMessage;
 
-class MessageList
+class MessageList implements MessageListInterface
 {
     /**
      * @var MessageInterface[]
